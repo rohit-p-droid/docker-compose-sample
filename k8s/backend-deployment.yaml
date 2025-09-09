@@ -1,0 +1,48 @@
+# Development
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: full-stack-docker-app-backend:latest
+        imagePullPolicy: Never
+        ports: 
+          - containerPort: 30000
+        envFrom:
+          - configMapRef:
+              name: backend-config
+          - secretRef:
+              name: backend-secret
+
+---
+
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: backend
+  type: LoadBalancer
+  ports:
+    - port: 30000
+      targetPort: 30000
+
+
+
+
+
+

@@ -2,12 +2,12 @@ const express = require('express');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 30000;
 
 // CORS middleware
 app.use((req, res, next) => {
   // Get single CORS origin from environment variable
-  const allowedOrigin = process.env.CORS_ORIGINS || 'http://localhost:3001';
+  const allowedOrigin = process.env.CORS_ORIGINS || 'http://localhost:30001';
   
   console.log('Allowed CORS Origin:', allowedOrigin);
   

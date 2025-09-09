@@ -10,6 +10,7 @@ export const API_CONFIG = {
 
 // Helper function to build full API URLs
 export const getApiUrl = (endpoint: string): string => {
+  console.log("URL", process.env.NEXT_PUBLIC_API_URL)
   return `${API_CONFIG.baseURL}${endpoint}`;
 };
 
